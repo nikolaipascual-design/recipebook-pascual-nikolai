@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{% block title %}My amazing site{% endblock %}</title>
+</head>
+<body>
+  <header>
+    <h1>Recipe Book</h1>
+    <br>
+    <a href="recipes/list.html">Home</a>
+  </header>
+  <div>
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>
