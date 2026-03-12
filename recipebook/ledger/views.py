@@ -1,6 +1,9 @@
 from django.shortcuts import render
+from .models import Ingredient, Recipe, RecipeIngredient
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
 
-# Create your views here.
+
 from django.http import HttpResponse
 
 def index(request):
@@ -72,3 +75,19 @@ def recipes(request):
         ]
     }
     return render(request, "ledger/recipes/list.html", ctx)
+
+
+class RecipeListView(ListView):
+    model = Recipe
+    template_name = 'ledger/list.html'
+
+    def get_queryset(self):
+        return Ingredient.objects.filter(recipe__recipe__name = "Recipe 1")
+    
+
+class RecipeDetailView(DetailView):
+    model = Recipe
+    template_name = 'ledger/list.html'
+
+class LoginView(LoginView):
+    template_name = 'ledger/recipe/login.html'

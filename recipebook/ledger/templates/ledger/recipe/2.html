@@ -3,8 +3,13 @@
 
 {% block title %}Recipe 1{% endblock %}
 {% Block content %}
+<p>{% request.user.get_full_name %}</p>
+<form method="POST" action="{% url 'logout' %}">
+  {% csrf_token %}
+  {{ form.as_p }}
+<button type="submit">Logout</button>
   <ul>
-    {% recipes.1 %}
+    {% recipes.0 %}
     <li>{{ name }} {{ quantity }}</li>
     {% endblock %}
   </ul>
