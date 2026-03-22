@@ -1,0 +1,21 @@
+<form action="/" method="post">
+    {% csrf_token %}
+    <label for="recipe">
+        <span>Recipe Name</span>
+    <input type="text" id="name" name="name">
+    </label>
+    <label for="recipe">
+        <span>Ingredient</span>
+    <input type="text" id="ingredient" name="ingredient">
+    </label>
+    <label for="recipe">
+        <span>Quantity</span>
+    <input type="int" id="quantity" name="quantity">
+    </label>
+    <select id="Recipe" name="recipe">
+        {% for recipe in recipes %}
+            <option value="{{ recipes.pk }}">{{ recipe.name }}</option>
+        {% endfor %}
+    </select>
+<input type="submit" value="Submit">
+</form>

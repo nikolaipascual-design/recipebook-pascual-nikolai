@@ -91,3 +91,17 @@ class RecipeDetailView(DetailView):
 
 class LoginView(LoginView):
     template_name = 'ledger/recipe/login.html'
+
+
+class RecipeAddListView(ListView):
+    model = Recipe
+    def post(self, request, *args, **kwargs):
+        t = Recipe()
+        t.name = request.POST.get('name')
+        t.ingredient = request.POST.get('ingredient')
+        t.quantity = request.POST.get('quantity')
+        t.taskgroup = Recipe.objects.get(pk=request.POST.get('taskgroup'))
+        t.save()
+        return self.get(request, *args, **kwargs)
+    
+    template_name = 'ledger/recipe/add.html'

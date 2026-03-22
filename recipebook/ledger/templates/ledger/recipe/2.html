@@ -9,6 +9,7 @@
   {{ form.as_p }}
 <button type="submit">Logout</button>
   <ul>
+    <img src="{{ image }}" alt="{{ description }}">
     {% recipes.0 %}
     <li>{{ name }} {{ quantity }}</li>
     {% endblock %}
